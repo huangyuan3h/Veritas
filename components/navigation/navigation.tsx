@@ -18,6 +18,11 @@ import {
   Sparkles,
 } from "lucide-react";
 import type { LucideIcon } from "lucide-react";
+import {
+  Tooltip,
+  TooltipTrigger,
+  TooltipContent,
+} from "@/components/ui/tooltip";
 import { Button } from "@/components/ui/button";
 
 const iconMap: Record<NavItem["icon"], LucideIcon> = {
@@ -77,7 +82,7 @@ export function Navigation() {
             size="icon"
             variant="ghost"
             onClick={toggleNav}
-            className="size-8 transition-all duration-300 ease-in-out"
+            className="size-8 rounded-xl bg-slate-100 text-slate-600 transition-all duration-300 ease-in-out hover:bg-slate-200 hover:text-slate-800"
           >
             <ArrowLeftToLine className="size-4" />
           </Button>
@@ -91,26 +96,43 @@ export function Navigation() {
             pathname === item.href || (pathname === "/" && index === 0);
 
           return (
-            <Link
-              key={item.href}
-              href={item.href}
-              className={cn(
-                "flex items-center font-medium transition-all duration-300 ease-in-out",
-                isCollapsed
-                  ? "justify-center rounded-2xl py-3"
-                  : "gap-3 rounded-2xl px-3 py-2 text-sm",
-                active
-                  ? "bg-gradient-to-r from-amber-100 to-rose-100 text-rose-700"
-                  : "text-slate-600 hover:bg-slate-100 hover:text-slate-900"
-              )}
-            >
-              <Icon className="size-4 transition-transform duration-300 ease-in-out" />
-              {isOpen && (
-                <span className="transition-opacity duration-300 ease-in-out">
+            <Tooltip key={item.href} disableHoverableContent={!isCollapsed}>
+              <TooltipTrigger asChild>
+                <Link
+                  href={item.href}
+                  className={cn(
+                    "group flex items-center font-medium transition-all duration-300 ease-in-out",
+                    isCollapsed
+                      ? "justify-center rounded-xl py-3 text-slate-500"
+                      : "gap-3 rounded-2xl px-3 py-2 text-sm text-slate-600",
+                    active
+                      ? "bg-gradient-to-r from-amber-100 to-rose-100 text-rose-700"
+                      : "hover:bg-slate-100 hover:text-slate-900"
+                  )}
+                >
+                  <Icon
+                    className={cn(
+                      "size-4 transition-colors duration-200",
+                      active ? "text-current" : "text-inherit"
+                    )}
+                  />
+                  {isOpen && (
+                    <span className="transition-opacity duration-300 ease-in-out">
+                      {item.label}
+                    </span>
+                  )}
+                </Link>
+              </TooltipTrigger>
+              {isCollapsed && (
+                <TooltipContent
+                  side="right"
+                  sideOffset={12}
+                  className="bg-slate-800 text-white"
+                >
                   {item.label}
-                </span>
+                </TooltipContent>
               )}
-            </Link>
+            </Tooltip>
           );
         })}
       </nav>
