@@ -28,12 +28,7 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased bg-slate-50`}
       >
-        <Layout
-          title="Dashboard"
-          subtitle="Your fast market desk—watch, analyze, act."
-        >
-          {children}
-        </Layout>
+        <Layout title="Journey">{children}</Layout>
       </body>
     </html>
   );

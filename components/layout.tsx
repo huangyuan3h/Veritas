@@ -15,7 +15,6 @@ import { getPageAgentConfig } from "@/components/agent/config";
 interface LayoutProps {
   children: React.ReactNode;
   title?: string;
-  subtitle?: string;
   enableAgent?: boolean;
   agentConfig?: AgentConfig;
   pageName?: string;
@@ -23,9 +22,8 @@ interface LayoutProps {
 
 function LayoutShell({
   children,
-  title = "Dashboard",
-  subtitle,
-}: Pick<LayoutProps, "children" | "title" | "subtitle">) {
+  title = "Journey",
+}: Pick<LayoutProps, "children" | "title">) {
   const { isOpen, mode, width } = useAgentState();
   const [isClient, setIsClient] = useState(false);
 
@@ -43,7 +41,7 @@ function LayoutShell({
         className="flex flex-1 flex-col transition-[margin-right] duration-300 ease-in-out"
         style={{ marginRight: rightInset }}
       >
-        <Header title={title} subtitle={subtitle} />
+        <Header title={title} />
         <main className="flex-1 overflow-y-auto bg-slate-50 p-8">
           {children}
         </main>
@@ -54,14 +52,13 @@ function LayoutShell({
 
 function StaticShell({
   children,
-  title = "Dashboard",
-  subtitle,
-}: Pick<LayoutProps, "children" | "title" | "subtitle">) {
+  title = "Journey",
+}: Pick<LayoutProps, "children" | "title">) {
   return (
     <div className="flex min-h-screen bg-slate-50">
       <Navigation />
       <div className="flex flex-1 flex-col">
-        <Header title={title} subtitle={subtitle} />
+        <Header title={title} />
         <main className="flex-1 overflow-y-auto bg-slate-50 p-8">
           {children}
         </main>
@@ -83,9 +80,7 @@ export function Layout(props: LayoutProps) {
   if (!effectiveConfig.enabled) {
     return (
       <NavigationProvider>
-        <StaticShell title={props.title} subtitle={props.subtitle}>
-          {props.children}
-        </StaticShell>
+        <StaticShell title={props.title}>{props.children}</StaticShell>
       </NavigationProvider>
     );
   }
@@ -97,9 +92,7 @@ export function Layout(props: LayoutProps) {
           config={effectiveConfig}
           enabled={effectiveConfig.enabled}
         >
-          <LayoutShell title={props.title} subtitle={props.subtitle}>
-            {props.children}
-          </LayoutShell>
+          <LayoutShell title={props.title}>{props.children}</LayoutShell>
         </AgentProvider>
       </BaseAgentProvider>
     </NavigationProvider>
