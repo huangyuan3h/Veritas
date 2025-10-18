@@ -1,9 +1,9 @@
-"use client";
+"use client"
 
-import { Bell, ChevronDown, Search } from "lucide-react";
-import { Button } from "@/components/ui/button";
-import { Avatar, AvatarFallback } from "@/components/ui/avatar";
-import { Input } from "@/components/ui/input";
+import { Bell, ChevronDown, Search } from "lucide-react"
+import { Button } from "@/components/ui/button"
+import { Avatar, AvatarFallback } from "@/components/ui/avatar"
+import { Input } from "@/components/ui/input"
 import {
   DropdownMenu,
   DropdownMenuTrigger,
@@ -11,11 +11,9 @@ import {
   DropdownMenuItem,
   DropdownMenuLabel,
   DropdownMenuSeparator,
-} from "@/components/ui/dropdown-menu";
+} from "@/components/ui/dropdown-menu"
 
-interface HeaderActionsProps {}
-
-export function HeaderActions({}: HeaderActionsProps) {
+export function HeaderActions() {
   return (
     <div className="flex items-center gap-3">
       <div className="hidden items-center gap-2 rounded-lg border border-slate-200/80 bg-white px-3 py-1.5 transition hover:border-slate-300/80 md:flex">
@@ -33,7 +31,7 @@ export function HeaderActions({}: HeaderActionsProps) {
         className="relative size-12 rounded-xl border border-slate-100 bg-white text-slate-600 shadow-[0_10px_30px_-18px_rgba(15,23,42,0.45)] transition hover:border-slate-200 hover:bg-slate-100 hover:text-slate-800"
       >
         <Bell className="size-4" />
-        <span className="absolute -right-1 -top-1 inline-flex h-5 min-w-[1.25rem] items-center justify-center rounded-full bg-gradient-to-br from-rose-500 via-rose-500 to-rose-600 px-1 text-[10px] font-semibold text-white shadow-[0_6px_16px_-8px_rgba(225,29,72,0.7)]">
+        <span className="absolute -top-1 -right-1 inline-flex h-5 min-w-[1.25rem] items-center justify-center rounded-full bg-gradient-to-br from-rose-500 via-rose-500 to-rose-600 px-1 text-[10px] font-semibold text-white shadow-[0_6px_16px_-8px_rgba(225,29,72,0.7)]">
           2
         </span>
       </Button>
@@ -45,18 +43,14 @@ export function HeaderActions({}: HeaderActionsProps) {
             className="flex h-12 items-center gap-3 rounded-xl bg-white px-3 pr-4 text-slate-700 transition hover:bg-slate-100 hover:text-slate-900"
           >
             <Avatar className="size-9">
-              <AvatarFallback className="bg-blue-500 text-white">
-                U
-              </AvatarFallback>
+              <AvatarFallback className="bg-blue-500 text-white">U</AvatarFallback>
             </Avatar>
-            <span className="hidden text-sm font-medium sm:block">
-              User Name
-            </span>
+            <span className="hidden text-sm font-medium sm:block">User Name</span>
             <ChevronDown className="size-4" />
           </Button>
         </DropdownMenuTrigger>
         <DropdownMenuContent align="end" className="w-48">
-          <DropdownMenuLabel className="text-xs uppercase tracking-wide text-slate-400">
+          <DropdownMenuLabel className="text-xs tracking-wide text-slate-400 uppercase">
             Account
           </DropdownMenuLabel>
           <DropdownMenuItem className="gap-2 text-sm text-slate-600">
@@ -72,5 +66,5 @@ export function HeaderActions({}: HeaderActionsProps) {
         </DropdownMenuContent>
       </DropdownMenu>
     </div>
-  );
+  )
 }

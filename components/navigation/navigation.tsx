@@ -1,11 +1,11 @@
-"use client";
+"use client"
 
-import Link from "next/link";
-import { usePathname } from "next/navigation";
-import { navItems } from "./constants";
-import type { NavItem } from "./types";
-import { cn } from "@/lib/utils";
-import { useNavigation } from "@/contexts/navigation-context";
+import Link from "next/link"
+import { usePathname } from "next/navigation"
+import { navItems } from "./constants"
+import type { NavItem } from "./types"
+import { cn } from "@/lib/utils"
+import { useNavigation } from "@/contexts/navigation-context"
 import {
   Compass,
   Library,
@@ -14,16 +14,11 @@ import {
   PenSquare,
   UsersRound,
   ArrowLeftToLine,
-  ArrowRightToLine,
   Sparkles,
-} from "lucide-react";
-import type { LucideIcon } from "lucide-react";
-import {
-  Tooltip,
-  TooltipTrigger,
-  TooltipContent,
-} from "@/components/ui/tooltip";
-import { Button } from "@/components/ui/button";
+} from "lucide-react"
+import type { LucideIcon } from "lucide-react"
+import { Tooltip, TooltipTrigger, TooltipContent } from "@/components/ui/tooltip"
+import { Button } from "@/components/ui/button"
 
 const iconMap: Record<NavItem["icon"], LucideIcon> = {
   Compass,
@@ -32,19 +27,19 @@ const iconMap: Record<NavItem["icon"], LucideIcon> = {
   FileCheck2,
   PenSquare,
   UsersRound,
-};
+}
 
 export function Navigation() {
-  const pathname = usePathname();
-  const { isOpen, navWidth, toggleNav } = useNavigation();
-  const isCollapsed = !isOpen;
+  const pathname = usePathname()
+  const { isOpen, navWidth, toggleNav } = useNavigation()
+  const isCollapsed = !isOpen
 
   const handleBrandClick = (event: React.MouseEvent<HTMLAnchorElement>) => {
     if (isCollapsed) {
-      event.preventDefault();
-      toggleNav();
+      event.preventDefault()
+      toggleNav()
     }
-  };
+  }
 
   return (
     <aside
@@ -54,7 +49,7 @@ export function Navigation() {
       <div
         className={cn(
           "flex items-center justify-between px-4 py-5 transition-all duration-300 ease-in-out",
-          isCollapsed && "flex-col gap-3 px-0 py-6"
+          isCollapsed && "flex-col gap-3 px-0 py-6",
         )}
       >
         <Link
@@ -62,16 +57,16 @@ export function Navigation() {
           onClick={handleBrandClick}
           className={cn(
             "flex items-center gap-3 transition-all duration-300 ease-in-out",
-            isCollapsed && "justify-center"
+            isCollapsed && "justify-center",
           )}
         >
-          <div className="flex h-10 w-10 items-center justify-center rounded-2xl bg-gradient-to-tr from-amber-400 to-rose-500 text-white font-semibold">
+          <div className="flex h-10 w-10 items-center justify-center rounded-2xl bg-gradient-to-tr from-amber-400 to-rose-500 font-semibold text-white">
             V
           </div>
           {isOpen && (
             <div className="leading-tight opacity-100 transition-opacity duration-300 ease-in-out">
               <p className="text-base font-semibold text-slate-900">Veritas</p>
-              <p className="text-xs font-medium uppercase tracking-wide text-amber-600">
+              <p className="text-xs font-medium tracking-wide text-amber-600 uppercase">
                 Learning Atlas
               </p>
             </div>
@@ -91,9 +86,8 @@ export function Navigation() {
 
       <nav className="flex-1 space-y-1 px-3">
         {navItems.map((item, index) => {
-          const Icon = iconMap[item.icon];
-          const active =
-            pathname === item.href || (pathname === "/" && index === 0);
+          const Icon = iconMap[item.icon]
+          const active = pathname === item.href || (pathname === "/" && index === 0)
 
           return (
             <Tooltip key={item.href} disableHoverableContent={!isCollapsed}>
@@ -107,13 +101,13 @@ export function Navigation() {
                       : "gap-3 rounded-2xl px-3 py-2 text-sm text-slate-600",
                     active
                       ? "bg-gradient-to-r from-amber-100 to-rose-100 text-rose-700"
-                      : "hover:bg-slate-100 hover:text-slate-900"
+                      : "hover:bg-slate-100 hover:text-slate-900",
                   )}
                 >
                   <Icon
                     className={cn(
                       "size-4 transition-colors duration-200",
-                      active ? "text-current" : "text-inherit"
+                      active ? "text-current" : "text-inherit",
                     )}
                   />
                   {isOpen && (
@@ -133,7 +127,7 @@ export function Navigation() {
                 </TooltipContent>
               )}
             </Tooltip>
-          );
+          )
         })}
       </nav>
 
@@ -145,8 +139,8 @@ export function Navigation() {
               Keep the curiosity glowing
             </div>
             <p className="mt-2 text-xs text-slate-500">
-              Explore new chapters, save favorites, and follow your lifelong
-              learning journey.
+              Explore new chapters, save favorites, and follow your lifelong learning
+              journey.
             </p>
           </div>
         ) : (
@@ -159,5 +153,5 @@ export function Navigation() {
         )}
       </div>
     </aside>
-  );
+  )
 }
