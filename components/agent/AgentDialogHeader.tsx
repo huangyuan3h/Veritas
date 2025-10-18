@@ -32,7 +32,7 @@ export function AgentDialogHeader({
           <Bot className="h-4 w-4 text-white" />
         </div>
         <div>
-          <CardTitle className="text-lg font-semibold">Kairos AI</CardTitle>
+          <CardTitle className="text-lg font-semibold">Veritas AI</CardTitle>
         </div>
       </div>
       <div className="flex items-center space-x-2">
