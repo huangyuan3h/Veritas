@@ -28,7 +28,7 @@ export function AgentDialogHeader({
   return (
     <CardHeader className="flex flex-row items-center justify-between space-y-0 !pt-2 !pb-4 border-b">
       <div className="flex items-center space-x-2">
-        <div className="w-8 h-8 bg-gradient-to-r from-blue-600 to-purple-600 rounded-lg flex items-center justify-center">
+        <div className="w-8 h-8 bg-gradient-to-r from-amber-400 to-rose-500 rounded-lg flex items-center justify-center">
           <Bot className="h-4 w-4 text-white" />
         </div>
         <div>

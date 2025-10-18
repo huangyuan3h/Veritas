@@ -59,7 +59,7 @@ export function AgentTrigger({ className }: AgentTriggerProps) {
             size="lg"
             className={cn(
               "relative h-12 w-12 rounded-full shadow-lg transition-all duration-200",
-              "bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700",
+              "bg-gradient-to-r from-amber-400 to-rose-500 hover:from-amber-500 hover:to-rose-600",
               "text-white border-0 cursor-pointer !px-2"
             )}
           >

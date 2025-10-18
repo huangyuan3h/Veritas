@@ -112,7 +112,7 @@ export function AgentDialogHistory({
             key={session.id}
             className={cn(
               "p-4 border-b border-gray-100 cursor-pointer hover:bg-gray-100 transition-colors",
-              currentSessionId === session.id && "bg-blue-50 border-blue-200"
+              currentSessionId === session.id && "bg-amber-50 border-amber-200"
             )}
             onClick={() => onSelectSession(session.id)}
           >

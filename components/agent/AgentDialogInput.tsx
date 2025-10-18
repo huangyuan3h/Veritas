@@ -55,10 +55,10 @@ export function AgentDialogInput({
             value={inputValue}
             onChange={onInputChange}
             onKeyDown={handleKeyDown}
-            placeholder="Ask me anything..."
+            placeholder="Ask Veritas AI for insights, summaries, or next steps..."
             disabled={isSubmitting}
-            className="min-h-[60px] max-h-[200px] resize-none pr-12 border-gray-200 focus:border-blue-500 focus:ring-1 focus:ring-blue-500 transition-colors text-sm leading-relaxed"
-            rows={1}
+            className="min-h-[60px] max-h-[200px] resize-none pr-12 border-gray-200 focus:border-amber-500 focus:ring-1 focus:ring-amber-500 transition-colors text-sm leading-relaxed"
+            rows={3}
             style={{
               fontFamily:
                 'ui-monospace, SFMono-Regular, "SF Mono", Consolas, "Liberation Mono", Menlo, monospace',
@@ -70,13 +70,11 @@ export function AgentDialogInput({
           {/* 提交状态指示器 */}
           <div className="absolute right-3 bottom-3 pointer-events-none">
             {isSubmitting ? (
-              <Loader2 className="h-4 w-4 animate-spin text-blue-500" />
+              <Loader2 className="h-4 w-4 animate-spin text-amber-500" />
+            ) : inputValue.trim() ? (
+              <Send className={`h-4 w-4 transition-colors text-amber-500`} />
             ) : (
-              <Send
-                className={`h-4 w-4 transition-colors ${
-                  inputValue.trim() ? "text-blue-500" : "text-gray-300"
-                }`}
-              />
+              <Send className={`h-4 w-4 transition-colors text-gray-300`} />
             )}
           </div>
         </div>

@@ -31,7 +31,7 @@ export function AgentDialogMessages({
             )}
           >
             {message.role === "assistant" && (
-              <div className="w-8 h-8 bg-gradient-to-r from-blue-600 to-purple-600 rounded-full flex items-center justify-center flex-shrink-0">
+              <div className="w-8 h-8 bg-gradient-to-r from-amber-400 to-rose-500 rounded-full flex items-center justify-center flex-shrink-0">
                 <Bot className="h-4 w-4 text-white" />
               </div>
             )}
@@ -39,15 +39,15 @@ export function AgentDialogMessages({
               className={cn(
                 "max-w-[80%] rounded-lg px-4 py-2",
                 message.role === "user"
-                  ? "bg-blue-600 text-white"
-                  : "bg-gray-100 text-gray-900"
+                  ? "bg-gradient-to-r from-amber-500 to-rose-500 text-white"
+                  : "bg-slate-100 text-slate-900"
               )}
             >
               <p className="text-sm whitespace-pre-wrap">{message.content}</p>
               <p
                 className={cn(
                   "text-xs mt-1",
-                  message.role === "user" ? "text-blue-100" : "text-gray-500"
+                  message.role === "user" ? "text-white/80" : "text-slate-500"
                 )}
               >
                 {formatTime(message.timestamp)}
@@ -64,13 +64,13 @@ export function AgentDialogMessages({
       {/* 加载状态 */}
       {isLoading && (
         <div className="flex space-x-3">
-          <div className="w-8 h-8 bg-gradient-to-r from-blue-600 to-purple-600 rounded-full flex items-center justify-center">
+          <div className="w-8 h-8 bg-gradient-to-r from-amber-400 to-rose-500 rounded-full flex items-center justify-center">
             <Bot className="h-4 w-4 text-white" />
           </div>
           <div className="bg-gray-100 rounded-lg px-4 py-2">
             <div className="flex items-center space-x-2">
-              <Loader2 className="h-4 w-4 animate-spin text-gray-500" />
-              <span className="text-sm text-gray-500">Thinking...</span>
+              <Loader2 className="h-4 w-4 animate-spin text-slate-500" />
+              <span className="text-sm text-slate-500">Thinking...</span>
             </div>
           </div>
         </div>
